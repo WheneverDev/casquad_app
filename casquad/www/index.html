@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link rel="stylesheet"  href="css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet"  href="css/index.css">
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script  src="js/jquery.mobile-1.4.5.min.js"></script>
+    <title>CASQU'AD ALPHA</title>
+</head>
+<body>
+<div data-role=page id=home>
+    <div data-role=header>
+        <h1>Nano 33 BLE ADC</h1>
+    </div>
+    <div data-role=content>
+        <p id="message">Message</p>
+        <p id="analogValue"></p>
+
+        <div data-role=controlgroup data-type=horizontal>
+            <button type="button" id="ledButton">LED</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
