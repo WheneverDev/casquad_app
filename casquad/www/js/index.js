@@ -20,9 +20,7 @@ var app = {
         if (device_id === 0) {
             ble.scan([],120,scanSuccess,scanFailure);
             message.innerHTML = "start scan ...";
-        }
-
-        else {
+        } else {
             ble.connect(device_id,connectSuccess,connectFailure);
             message.innerHTML = "connect ....";
         }
