@@ -15,7 +15,8 @@
   "devDependencies": {
     "cordova-android": "^10.1.1",
     "cordova-ios": "^6.2.0",
-    "cordova-plugin-ble-central": "^1.4.4"
+    "cordova-plugin-ble-central": "^1.4.4",
+    "cordova-plugin-vibration": "^3.1.1"
   },
   "cordova": {
     "platforms": [
@@ -28,7 +29,8 @@
         "IOS_INIT_ON_LOAD": "true",
         "BLUETOOTH_RESTORE_STATE": "false",
         "BLUETOOTH_USAGE_DESCRIPTION": " "
-      }
+      },
+      "cordova-plugin-vibration": {}
     }
   }
 }

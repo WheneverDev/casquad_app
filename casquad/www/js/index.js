@@ -17,6 +17,8 @@ var app = {
         let analogValue = document.getElementById('analogValue');
         let ledButton = document.getElementById('ledButton');
 
+        console.log(navigator.vibrate);
+
         if (device_id === 0) {
             ble.scan([],120,scanSuccess,scanFailure);
             message.innerHTML = "start scan ...";
@@ -58,8 +60,7 @@ var app = {
 
         function notify_success(buffer) {
             let view = new Uint8Array(buffer);
-            let x = view[0]*0x100 + view[1];
-            analogValue.innerHTML = x;
+            if(view[0] === 0) navigator.vibrate(1000);
         }
 
         function notify_failure(reason) {
