@@ -8,22 +8,29 @@
     <link rel="stylesheet"  href="css/jquery.mobile-1.4.5.min.css">
     <link rel="stylesheet"  href="css/index.css">
     <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5min.js"></script>
     <title>CASQU'AD ALPHA</title>
 </head>
 <body>
 
 <div data-role=page id=home>
-    <div data-role=header id="header">
-        <h1>CASQU'AD BETA</h1>
+    <div data-role=header id="top-div">
+        <h1 id="title">CASQU'AD BETA</h1>
     </div>
     <div data-role=content id="container">
-        <p id="message">Message</p>
-        <p id="analogValue"></p>
+        <div>
+            <img id="logo" src="./img/CASQUAD_CARRE.svg">
+            <p id="message">Message</p>
+        </div>
 
-        <div data-role=controlgroup data-type=horizontal>
+        <div>
             <button type="button" id="ledButton">LED</button>
         </div>
+    </div>
+    <div id="bottom-div">
+        <img class="iconbar" src="img/CASQUE.svg">
+        <img class="iconbar" src="img/CASQUE.svg">
+        <img class="iconbar" src="img/CASQUE.svg">
     </div>
 </div>
 
