@@ -88,7 +88,7 @@ var app = {
 
         function notify_success(buffer) {
             let view = new Uint8Array(buffer);
-            if(view[0] === 0) navigator.vibrate(1000);
+            if(view[0] === 0) fallDetected();
         }
 
         function notify_failure(reason) {
@@ -200,13 +200,13 @@ var app = {
 
         function fallDetected() {
             let timepass = 0
-            for (var i = 1; i <= 3; i++) {
+            for (var i = 1; i <= 30; i++) {
                 var vibrate = function(i) {
                     
                     return function() {
                         navigator.vibrate(500);
                         timepass++
-                        if(timepass >= 3) sendSMS();
+                        if(timepass >= 30) sendSMS();
                     }
                 };
                 setTimeout(vibrate(i), 1000 * i);
