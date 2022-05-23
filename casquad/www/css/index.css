@@ -136,6 +136,35 @@ body {
     align-items: center;
 }
 
+#inputnbr {
+    border-radius: 20px;
+    border: none;
+    height: 60px;
+    width: 250px;
+    outline: none;
+    font-size: x-large;
+    text-align: center;
+}
+
+#phone_entry {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-end;
+    gap: 10px;
+    align-items: center;
+}
+
+.phone_btn {
+    border: none;
+    background-color: white;
+    width: 90px;
+    height: 45px;
+    border-radius: 15px;
+    font-size: 17px;
+}
+
 .app {
     background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
     position:absolute;             /* position in the center of the screen */

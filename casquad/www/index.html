@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta http-equiv="Content-Security-Policy" content="default-src * gap: ws: https://ssl.gstatic.com;style-src * 'unsafe-inline' 'self' data: blob:;script-src * 'unsafe-inline' 'unsafe-eval' data: blob:;img-src * data: 'unsafe-inline' 'self' content:;fmedia-src mediastream;">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="initial-scale=1, width=device-width">
@@ -39,9 +39,13 @@
     <!-- OPTION -->
     <div data-role=content id="container-options">
         <div id="top-container">
-        </div>
-        
-        <div id="bottom-container">
+            <h1>Téléphone</h1>
+            <div id="phone_entry">
+                <input type="tel" id="inputnbr" name="inputnbr">
+                <button class="phone_btn">Ajouter</button>
+                
+                <button class="phone_btn">TEST</button>
+            </div>
         </div>
     </div>
 

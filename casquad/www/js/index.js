@@ -6,6 +6,26 @@ var app = {
         //let device_id = "FA:46:B0:27:DA:CD";
         device_id = 0;
 
+        const storage = window.localStorage;
+
+        const permissions = cordova.plugins.permissions;
+
+        var list = [
+            permissions.SEND_SMS,
+            permissions.READ_PHONE_STATE
+        ];
+            
+        permissions.requestPermissions(
+            list,
+            function(status) {
+              if( !status.hasPermission ) error();
+            },
+        error);
+
+        function error() {
+            console.warn('Permission is not turned on');
+        }
+          
         let current_page = "menu";
         const service_name = "CASQU'AD";
 
@@ -15,6 +35,8 @@ var app = {
 
         const message = document.getElementById('message');
         const mainButton = document.getElementById('mainButton');
+        
+        const phoneInput = document.querySelector("#inputnbr");
 
         const buttonPage = {
             menu: document.getElementById('menuButton'),
@@ -107,6 +129,10 @@ var app = {
                     document.querySelector("#container-options").style.display = "flex";
                     document.querySelector("#title").textContent = "OPTIONS";
                     StatusBar.backgroundColorByHexString("#FFFFFF");
+
+                    if(storage.getItem("phone")) {
+                        phoneInput.value = storage.getItem("phone");
+                    }
                     break;
             }
             
@@ -117,6 +143,76 @@ var app = {
             let data = new Uint8Array(1);
             data[0] = 4;
             ble.write(device_id, service_uuid, channel_characteristic_uuid, data.buffer, ledSuccess, ledError);
+        }
+
+        const phoneButton = document.querySelector("#phone_entry > button:nth-child(2)");
+            phoneButton.addEventListener("click", () => addNumber());
+
+        function addNumber() {
+            let content = phoneInput.value
+            storage.setItem("phone", content);
+            console.log(content + " added.")
+        }
+
+        const smsButton = document.querySelector("#phone_entry > button:nth-child(3)");
+            smsButton.addEventListener("click", () => fallDetected());
+
+        function sendSMS() {
+            let options = {
+                replaceLineBreaks: false, // true to replace \n by a new line, false by default
+                android: {
+                    intent: ''  // send SMS with the native android SMS messaging
+                }
+            };
+
+            const number = storage.getItem("phone");
+
+            let oldColor = mainButton.style.backgroundColor;
+
+            function success() { 
+                smsButton.style.backgroundColor = "#107e00"
+                setTimeout(() => {
+                    smsButton.style.backgroundColor = oldColor;
+                }, 2000) 
+            };
+
+            function error (e) {             
+                smsButton.style.backgroundColor = "#8c0500";
+                setTimeout(() => {
+                    smsButton.style.backgroundColor = oldColor;
+                }, 2000) 
+            };
+
+
+            let message = "Casqu'AD";
+            console.log(number + " ---> " + message);
+            navigator.geolocation.getCurrentPosition((position) => {
+
+                message = `https://www.google.com/maps/search/?api=1&query=${position.coords.latitude},${position.coords.longitude}`
+                sms.send(number, message, options, success, error);
+            },
+            (error) => {
+                message = error.message
+            } );
+                
+            
+        }
+
+        function fallDetected() {
+            let timepass = 0
+            for (var i = 1; i <= 3; i++) {
+                var vibrate = function(i) {
+                    
+                    return function() {
+                        navigator.vibrate(500);
+                        timepass++
+                        if(timepass >= 3) sendSMS();
+                    }
+                };
+                setTimeout(vibrate(i), 1000 * i);
+
+            }
+            
         }
 
         function ledSuccess() {
