@@ -161,7 +161,7 @@ var app = {
             let options = {
                 replaceLineBreaks: false, // true to replace \n by a new line, false by default
                 android: {
-                    intent: ''  // send SMS with the native android SMS messaging
+                    intent: '' 
                 }
             };
 
