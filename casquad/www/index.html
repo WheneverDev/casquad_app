@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src * gap: ws: https://ssl.gstatic.com;style-src * 'unsafe-inline' 'self' data: blob:;script-src * 'unsafe-inline' 'unsafe-eval' data: blob:;img-src * data: 'unsafe-inline' 'self' content:;fmedia-src mediastream;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link rel="stylesheet"  href="css/index.css">
+    <title>CASQU'AD ALPHA</title>
+</head>
+<body>
+
+<div data-role=page id=home>
+    <div data-role=header id="header">
+        <h1 id="title">CASQU'AD BETA</h1>
+    </div>
+
+    <!-- MENU -->
+    <div data-role=content id="container-menu">
+        <div id="top-container">
+            <img id="logo" src="./img/casque.png">
+            <p id="message">Message</p>
+        </div>
+        <button type="button" id="mainButton">LED</button>
+
+        <div id="bottom-container">
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div data-role=content id="container-dashboard">
+        <div id="top-container">
+        </div>
+
+        <div id="bottom-container">
+        </div>
+    </div>
+
+    <!-- OPTION -->
+    <div data-role=content id="container-options">
+        <div id="top-container">
+            <h1>Téléphone</h1>
+            <div id="phone_entry">
+                <input type="tel" id="inputnbr" name="inputnbr">
+                <button class="phone_btn">Ajouter</button>
+                
+                <button class="phone_btn">TEST</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <img class="iconbar" id="menuButton" src="img/CASQUE.svg">
+        <img class="iconbar" id="dashButton" src="img/dashboard.svg">
+        <img class="iconbar" id="optionButton" src="img/gear.svg">
+    </div>
+</div>
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+</body>
+</html>
